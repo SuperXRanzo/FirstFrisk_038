@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to First Flask!</h1>
+    <a href="/about">About</a>
+    <h2>Masukkan Nama:</h2>
+    <form action="/submit" method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <label for="theme">Pilih Warna Tema:</label>
+        <select name="theme" id="theme">
+            <option value="default">Default</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Bagian untuk menampilkan pesan -->
+    <div id="welcome-message" style="margin-top: 20px;"></div>
+
+    <!-- JavaScript untuk memberikan pengalaman lebih interaktif -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form untuk simulasi
+            const name = document.querySelector('input[name="name"]').value;
+            const theme = document.querySelector('select[name="theme"]').value;
+
+            if (name) {
+                const messageDiv = document.getElementById('welcome-message');
+                messageDiv.textContent = `Selamat datang, ${name}! Tema yang dipilih: ${theme}.`;
+            }
+        });
+    </script>
+</body>
+</html>
